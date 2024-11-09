@@ -4,14 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kotegoda Youth Sports Club (KYSC)</title>
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Swiper.js -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    
+    <!-- Optional: Tailwind Overrides for Swiper -->
+    <style>
+        .swiper {
+            width: 100%;
+            height: 100%;
+        }
+        .swiper-slide img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            transition: transform 0.3s ease; /* Smooth zoom effect */
+        }
+        .swiper-slide:hover img {
+            transform: scale(1.05); /* Slight zoom effect on hover */
+        }
+    </style>
 </head>
 <body class="bg-gray-100 font-sans leading-normal tracking-normal">
+
+    <!-- Navigation -->
+    <nav class="bg-blue-900 p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#" class="text-white font-bold text-lg">KYSC</a>
+            <div class="space-x-4">
+                <a href="#about" class="text-white hover:text-red-500">About</a>
+                <a href="#contact" class="text-white hover:text-red-500">Contact</a>
+                <a href="#login" class="text-white hover:text-red-500">Login</a>
+            </div>
+        </div>
+    </nav>
 
     <!-- Hero Section -->
     <section class="bg-blue-900 text-white h-screen flex items-center justify-center">
         <div class="text-center px-4 sm:px-8 lg:px-16">
-            <img src="logo.png" alt="KYSC Logo" class="mx-auto mb-4 w-24 h-24">
+            <img src="images/logo.png" alt="KYSC Logo" class="mx-auto mb-4 w-24 h-24">
             <h1 class="text-4xl sm:text-5xl font-bold mb-4">Kotegoda Youth Sports Club</h1>
             <p class="text-lg sm:text-xl max-w-xl mx-auto">
                 To empower our community by fostering a love for sports, building character, and inspiring a lifelong commitment to fitness and teamwork.
@@ -48,6 +82,45 @@
         </div>
     </section>
 
+    <!-- Gallery Section with Swiper -->
+    <section id="gallery" class="py-20 bg-gray-100 text-center">
+        <div class="container mx-auto px-4 sm:px-8 lg:px-16">
+            <h2 class="text-3xl sm:text-4xl font-bold text-blue-900 mb-6">Gallery</h2>
+            
+            <!-- Swiper Container -->
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <!-- Each Image Inside a Swiper Slide -->
+                    <div class="swiper-slide">
+                        <img src="images/gallery1.jpg" alt="Gallery Image 1" class="rounded-lg shadow-md">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="images/gallery2.jpg" alt="Gallery Image 2" class="rounded-lg shadow-md">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="images/gallery3.jpg" alt="Gallery Image 3" class="rounded-lg shadow-md">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="images/gallery4.jpg" alt="Gallery Image 4" class="rounded-lg shadow-md">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="images/gallery5.jpg" alt="Gallery Image 5" class="rounded-lg shadow-md">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="images/gallery6.jpg" alt="Gallery Image 6" class="rounded-lg shadow-md">
+                    </div>
+                </div>
+
+                <!-- Pagination Controls -->
+                <div class="swiper-pagination"></div>
+
+                <!-- Navigation Arrows -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="bg-blue-900 text-white py-6">
         <div class="container mx-auto px-4 sm:px-8 lg:px-16 text-center">
@@ -57,8 +130,48 @@
                 <a href="#" class="text-white hover:text-red-500">Twitter</a>
                 <a href="#" class="text-white hover:text-red-500">Instagram</a>
             </div>
+            <form id="contact" class="mt-4">
+                <h2 class="text-xl mb-2">Contact Us</h2>
+                <input type="text" class="block w-full bg-gray-200 text-gray-900 border border-gray-300 p-2 rounded mb-2" placeholder="Your Name">
+                <input type="email" class="block w-full bg-gray-200 text-gray-900 border border-gray-300 p-2 rounded mb-2" placeholder="Your Email">
+                <textarea class="block w-full bg-gray-200 text-gray-900 border border-gray-300 p-2 rounded mb-2" rows="4" placeholder="Your Message"></textarea>
+                <button type="submit" class="bg-red-600 text-white py-2 px-4 rounded hover:bg-red-500 transition-all">Send</button>
+            </form>
         </div>
     </footer>
+
+    <!-- Swiper.js Script -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        const swiper = new Swiper('.mySwiper', {
+            loop: true,  // Enables looping through the slides
+            spaceBetween: 20,  // Spacing between slides
+            slidesPerView: 1,  // Default: 1 slide per view
+            autoplay: {
+                delay: 3000,  // Automatically transitions every 3 seconds
+                disableOnInteraction: false,  // Keeps autoplay running even after user interacts
+            },
+            breakpoints: {
+                640: { // Small screens (phones)
+                    slidesPerView: 1,
+                },
+                768: { // Medium screens (tablets)
+                    slidesPerView: 2,
+                },
+                1024: { // Large screens (desktops)
+                    slidesPerView: 3, // Show 3 images at once
+                },
+            },
+            pagination: {
+                el: '.swiper-pagination',  // Pagination controls (dots)
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',  // Next slide button
+                prevEl: '.swiper-button-prev',  // Previous slide button
+            },
+        });
+    </script>
 
 </body>
 </html>
